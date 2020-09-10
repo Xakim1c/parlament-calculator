@@ -89,7 +89,6 @@ class Parties extends React.Component {
 
         if (percentsLeft == 0) {                     
 
-            //this.setState( {parties: parties} )
             Object.keys(this.state.parties).map((party) => {
                 console.log(party)
     
@@ -114,20 +113,27 @@ class Parties extends React.Component {
             })             
         } else {
             
-            this.setState( {parties: parties} )
             Object.keys(this.state.parties).map((party) => {
                 console.log(party)
 
-                parties[party].parlamentResultPercents = 0
+                //parties[party].parlamentResultPercents = 0
                 parties[party].parlamentResultChairs = 0
                 parties[party].message = ''
             })             
         }  
 
         //Против всех
-        if (parties['Против всех'].parlamentResultPercents < electionsConfig.against_all_cutoff && (percentsLeft == 0))  {
-            parties['Против всех'].message = electionsConfig.against_all_message   
-            this.setState( {againstAllReached: false} ) 
+        if (parties['Против всех'].voteResult < electionsConfig.against_all_cutoff)  {
+            console.log('TEST')
+            console.log(percentsLeft)
+            console.log(parties['Против всех'].voteResult)
+            if ((percentsLeft == 0) && (parties['Против всех'].voteResult > 0)){
+                parties['Против всех'].message = electionsConfig.against_all_message                    
+            }else {
+                parties['Против всех'].message = ''
+            }
+            this.setState( {againstAllReached: false} )
+            
         } else {
             parties['Против всех'].message = ''
             this.setState( {againstAllReached: true} )
