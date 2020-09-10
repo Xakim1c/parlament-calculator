@@ -76,7 +76,7 @@ class Parties extends React.Component {
             let voteResult = this.state.parties[party].voteResult
             percentSum = percentSum + voteResult
 
-            if (voteResult > electionsConfig.cutoff){
+            if (voteResult > electionsConfig.cutoff && party != 'Против всех'){
                 totalPassedParlamentPercent = totalPassedParlamentPercent + voteResult     
             }
 
@@ -100,7 +100,7 @@ class Parties extends React.Component {
                 let parlamentResultChairs = 0 
                 let message = electionsConfig.cutoff_message + ' ' + electionsConfig.cutoff + '%'
 
-                if (voteResult > electionsConfig.cutoff){
+                if (voteResult > electionsConfig.cutoff && party != 'Против всех'){
                     parlamentResultPercents = voteResult * 100 / totalPassedParlamentPercent  
                     parlamentResultChairs = electionsConfig.totalChairs * parlamentResultPercents / 100 
                     message = ''
