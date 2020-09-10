@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/parlament-calculator/static/css/main.5f361e03.chunk.css",
-    "main.js": "/parlament-calculator/static/js/main.771de511.chunk.js",
-    "main.js.map": "/parlament-calculator/static/js/main.771de511.chunk.js.map",
+    "main.js": "/parlament-calculator/static/js/main.ce736b49.chunk.js",
+    "main.js.map": "/parlament-calculator/static/js/main.ce736b49.chunk.js.map",
     "runtime-main.js": "/parlament-calculator/static/js/runtime-main.d4b27be5.js",
     "runtime-main.js.map": "/parlament-calculator/static/js/runtime-main.d4b27be5.js.map",
     "static/js/2.fa6f4e21.chunk.js": "/parlament-calculator/static/js/2.fa6f4e21.chunk.js",
     "static/js/2.fa6f4e21.chunk.js.map": "/parlament-calculator/static/js/2.fa6f4e21.chunk.js.map",
     "index.html": "/parlament-calculator/index.html",
-    "precache-manifest.a76c8e88111b2e506329c020e6610db0.js": "/parlament-calculator/precache-manifest.a76c8e88111b2e506329c020e6610db0.js",
+    "precache-manifest.8acf727a7050b108df9cc2bbe3f3c882.js": "/parlament-calculator/precache-manifest.8acf727a7050b108df9cc2bbe3f3c882.js",
     "service-worker.js": "/parlament-calculator/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/parlament-calculator/static/css/main.5f361e03.chunk.css.map",
     "static/js/2.fa6f4e21.chunk.js.LICENSE.txt": "/parlament-calculator/static/js/2.fa6f4e21.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.d4b27be5.js",
     "static/js/2.fa6f4e21.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.771de511.chunk.js"
+    "static/js/main.ce736b49.chunk.js"
   ]
 }
