@@ -125,7 +125,7 @@ class Parties extends React.Component {
         }  
 
         //Против всех
-        if (parties['Против всех'].parlamentResultPercents < electionsConfig.against_all_cutoff) {
+        if (parties['Против всех'].parlamentResultPercents < electionsConfig.against_all_cutoff && (percentsLeft == 0))  {
             parties['Против всех'].message = electionsConfig.against_all_message   
             this.setState( {againstAllReached: false} ) 
         } else {
