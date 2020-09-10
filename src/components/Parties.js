@@ -82,7 +82,7 @@ class Parties extends React.Component {
 
          })     
          
-        let percentsLeft = 100 - percentSum
+        let percentsLeft = Number(100 - percentSum).toFixed(2)
         this.setState( {percentsLeft: percentsLeft} )
 
         const parties = {...this.state.parties} 
