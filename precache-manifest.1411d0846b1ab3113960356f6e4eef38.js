@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9974a3dec1482934a41297a9ef30437d",
+    "revision": "8a98d7a76baf1988fdb9f9cbfccb198b",
     "url": "/parlament-calculator/index.html"
   },
   {
-    "revision": "c6cf4c9ce2512e00ec57",
+    "revision": "c400c4a9b58fd7f511ae",
     "url": "/parlament-calculator/static/css/main.5f361e03.chunk.css"
   },
   {
-    "revision": "b03cd30b216352fae3d4",
-    "url": "/parlament-calculator/static/js/2.b9d6cb96.chunk.js"
+    "revision": "87f7702aaed519dcb80b",
+    "url": "/parlament-calculator/static/js/2.4b287311.chunk.js"
   },
   {
-    "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/parlament-calculator/static/js/2.b9d6cb96.chunk.js.LICENSE.txt"
+    "revision": "89b0379e7bcda1a468d8b0343aeb4e53",
+    "url": "/parlament-calculator/static/js/2.4b287311.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c6cf4c9ce2512e00ec57",
-    "url": "/parlament-calculator/static/js/main.2510de8b.chunk.js"
+    "revision": "c400c4a9b58fd7f511ae",
+    "url": "/parlament-calculator/static/js/main.25e1e0f1.chunk.js"
   },
   {
     "revision": "932d320841f4ca88b720",
