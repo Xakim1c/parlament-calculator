@@ -5,8 +5,6 @@ import './App.css';
 import electionsConfig from './electionsConfig'
 import Parties from './components/Parties'
 
-import ParlamentChart from './components/ParlamentChart.js'
-
 function App() {	
 	
   return (
@@ -15,9 +13,7 @@ function App() {
       <div>{electionsConfig.distribute_all_votes_message}</div>
 
       <Parties></Parties>
-	  <ParlamentChart></ParlamentChart>
 	
-		<b>FFF</b>
     </div>
   );
 }

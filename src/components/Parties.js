@@ -3,12 +3,15 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 
 import electionsConfig from '../electionsConfig'
 
 import birimdik from './Биримдик.svg';
+
+import ParlamentChart from '../components/ParlamentChart'
 
 class Parties extends React.Component {
 
@@ -113,9 +116,7 @@ class Parties extends React.Component {
 
         //Против всех
         if (parties['Против всех'].voteResult < electionsConfig.against_all_cutoff)  {
-            console.log('TEST')
-            console.log(percentsLeft)
-            console.log(parties['Против всех'].voteResult)
+
             if ((percentsLeft == 0) && (parties['Против всех'].voteResult > 0)){
                 parties['Против всех'].message = electionsConfig.against_all_message                    
             }else {
@@ -131,10 +132,28 @@ class Parties extends React.Component {
         this.setState( {parties: parties} )
     }
 
+    prepareChartData = () => {
+
+
+
+        let chartData = [
+            ['TEST', 30, '#BE3075', 'TEST'],
+            ['TEST', 25, '#EB001F', 'TEST'],
+            ['TEST', 30, '#64A12D', 'TEST'],
+            ['TEST', 12, '#FFED00', 'TEST'],
+            ['TEST', 7, '#000000', 'TEST'],
+            ['TEST', 20, '#008AC5', 'TEST'],
+            ['TEST', 35, '#009EE0', 'TEST']
+        ]
+
+        return chartData
+    }
+
     render() {
 
         const isAgainstAllReached = this.state.againstAllReached;
 
+        //console.log(this.prepareChartData())
         return (
             <div> 
                 <div>Осталось распределить: {this.state.percentsLeft}</div>  
@@ -175,7 +194,9 @@ class Parties extends React.Component {
                     </ListItem>
                     );
                 })}
-                </List>                       
+                </List>     
+
+            <ParlamentChart>chartData={this.prepareChartData()}</ParlamentChart>                  
             </div>
           );
         }
