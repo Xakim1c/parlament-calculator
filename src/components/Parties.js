@@ -204,7 +204,13 @@ class Parties extends React.Component {
                 })}
                 </List>     
 
-            <ParlamentChart>chartData={this.prepareChartData()}</ParlamentChart>                  
+                <div>
+                    {this.state.percentsLeft == 0
+                        ? <ParlamentChart>chartData={this.prepareChartData()}</ParlamentChart>
+                        : <b>Распределите голоса чтобы посмотреть распределение</b>
+                    }
+                </div>
+                              
             </div>
           );
         }

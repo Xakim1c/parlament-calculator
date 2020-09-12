@@ -53,4 +53,10 @@ const ParlamentChart = (props) => <HighchartsReact
   options={generateChartData(props.children[1])}
 />
 
-export default ParlamentChart
+const areEqual = (prevProps, nextProps) => {
+    return (prevProps.children[1] === nextProps.children[1])
+    }
+
+export default React.memo(ParlamentChart, areEqual);
+  
+//export default ParlamentChart
