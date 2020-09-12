@@ -8,7 +8,7 @@ ItemSeriesModule(Highcharts);
 
 const generateChartData = (chartData) => {
 
-    console.log(chartData)
+    console.log('DRAW CHART')
     const options = {
 
         chart: {

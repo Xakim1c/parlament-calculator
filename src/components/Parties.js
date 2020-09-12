@@ -176,14 +176,13 @@ class Parties extends React.Component {
             if (Number(chairsNumber) > 0) {
 
                 let randomColor = this.randomColor();
-                let partyChartInfo = [party, Number(chairsNumber), randomColor, party]
+                let partyChartInfo = [party, parseInt(chairsNumber), randomColor, party]
                 chartData.push(partyChartInfo)
             } 
                         
         })    
-
         console.log(chartData)
-
+        //chartData = [['TEST', 25, '#ffbf00', 'TEST'], ['TEST', 25, '#ffbf00', 'TEST'], ['TEST', 25, '#ffbf00', 'TEST'], ['TEST', 25, '#ffbf00', 'TEST']]
         return chartData
     }
 
