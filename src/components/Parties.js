@@ -6,12 +6,49 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid'
+import Tooltip from '@material-ui/core/Tooltip';
+import Zoom from '@material-ui/core/Zoom';
+import { withStyles } from '@material-ui/core/styles';
 
 import electionsConfig from '../electionsConfig'
 
 import birimdik from './Биримдик.svg';
 
 import ParlamentChart from '../components/ParlamentChart'
+import { Typography } from '@material-ui/core';
+
+
+const styles = theme => ({
+    header: {
+        [theme.breakpoints.down('sm')]: {
+            width: '100%',
+          },
+        [theme.breakpoints.up('sm')]: {
+        width: '70%',
+        },
+        [theme.breakpoints.up('md')]: {
+        width: '50%',
+        },
+    },
+    redLine: {
+        content:'',
+        position:"absolute",
+        borderBottom:"solid 1px",
+        top:"50%",
+        color: "red",
+        justifyContent: "center",
+        [theme.breakpoints.down('sm')]: {
+            width: '100%',
+          },
+        [theme.breakpoints.up('sm')]: {
+        width: '80%',
+        },
+        [theme.breakpoints.up('md')]: {
+        width: '70%',
+        },
+    }
+  });
 
 class Parties extends React.Component {
 
@@ -160,49 +197,76 @@ class Parties extends React.Component {
         console.log(this.state)
 
         const isAgainstAllReached = this.state.againstAllReached;
+        const { classes } = this.props;
 
         //console.log(this.prepareChartData())
         return (
             <div> 
-                <div>Осталось распределить: {this.state.percentsLeft}</div>  
+                <Grid container justify="center">
+                    <Grid item className={classes.header}>
+                        <Typography variant="h6">{electionsConfig.distribute_all_votes_message}</Typography>
+                    </Grid>
+                </Grid>
+                <Typography variant="body1">Осталось распределить: {this.state.percentsLeft}</Typography>
+                
 
                 <b>{isAgainstAllReached ? electionsConfig.against_all_reached_message : ''}</b>
 
                 <List dense className={'Parties'}>
                 {electionsConfig.parties.map((value) => {
                     const labelId = `label-${value}`;
+                    const disabled = this.state.parties[value].message ? true : false
                     return (
-                    <ListItem key={value} button>
-                        <ListItemAvatar>
-                        <Avatar
-                            //alt={`Avatar n°${value}`}
-                            src={birimdik}
-                            variant="square"
-                        />
-                        </ListItemAvatar>
-                        <ListItemText id={labelId} primary={value} />
+                    <Tooltip TransitionComponent={Zoom} title={disabled ? this.state.parties[value].message : "" } arrow>
+                    <ListItem key={value} style={{justifyContent: "center"}} disabled={disabled}>
+                        {disabled ? <Grid item className={classes.redLine}></Grid> : null}
+                        <Grid item>
+                            <ListItemAvatar>
+                            <Avatar
+                                //alt={`Avatar n°${value}`}
+                                src={birimdik}
+                                variant="square"
+                            />
+                            </ListItemAvatar>
+                        </Grid>
+                        <Grid item xs={5}>
+                            <ListItemText id={labelId} primary={value} />
+                        </Grid>
                         
+                        <Grid style={{width: 90, paddingRight: 5}}>
                         <TextField  
                             id={value} 
                             type ='number'                            
                             onChange={this.voteNumberOnChange}
                             label="Процент голосов" 
-                            variant="outlined" /> 
+                            variant="outlined"
+                            fullWidth
+                            inputProps={{style: {fontSize: 14}}}
+                            InputLabelProps={{style: {fontSize: 14}}}
+                            />
+                            
+                        </Grid>
 
+                        <Grid style={{width: 80}}>
                         <TextField  
                             id={value} 
                             value={this.state.parties[value].parlamentResultChairs}
                             disabled={true}
                             onChange={this.voteNumberOnChange}
                             label="Мест в парламенте" 
-                            variant="outlined" /> 
+                            variant="outlined"
+                            fullWidth
+                            inputProps={{style: {fontSize: 14}}}
+                            InputLabelProps={{style: {fontSize: 14}}}
+                            /> 
+                        </Grid>
 
-                        <div>{this.state.parties[value].message}</div>
-
+                        {/* <div>{this.state.parties[value].message}</div> */}
                     </ListItem>
+                    </Tooltip>
                     );
                 })}
-                </List>     
+                </List>
 
                 <div>
                     {this.state.percentsLeft == 0
@@ -216,4 +280,4 @@ class Parties extends React.Component {
         }
     }    
 
-export default Parties
+export default withStyles(styles, { withTheme: true })(Parties)
