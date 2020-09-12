@@ -41,17 +41,15 @@ class Parties extends React.Component {
         this.state = defaultState;
       }    
 
+    
+
     voteNumberOnChange = (event) => {
-        console.log(event.target.id)
 
         const party = event.target.id
         const parties = {...this.state.parties}  
         parties[party].voteResult = Number(event.target.value)
 
         this.setState( {parties: parties} )
-
-        console.log(parties)
-        console.log(this.state)
 
         //Percents left
         this.calculateResults(party)
@@ -63,7 +61,6 @@ class Parties extends React.Component {
         let totalPassedParlamentPercent = 0
 
         Object.keys(this.state.parties).map((party) => {
-            console.log(party)
 
             let voteResult = this.state.parties[party].voteResult
             percentSum = percentSum + voteResult
@@ -82,7 +79,6 @@ class Parties extends React.Component {
         if (percentsLeft == 0) {                     
 
             Object.keys(this.state.parties).map((party) => {
-                console.log(party)
     
                 let voteResult = this.state.parties[party].voteResult
                 percentSum = percentSum + voteResult
@@ -106,7 +102,6 @@ class Parties extends React.Component {
         } else {
             
             Object.keys(this.state.parties).map((party) => {
-                console.log(party)
 
                 //parties[party].parlamentResultPercents = 0
                 parties[party].parlamentResultChairs = 0
@@ -134,22 +129,35 @@ class Parties extends React.Component {
 
     prepareChartData = () => {
 
+        let chartData = []
 
+        Object.keys(this.state.parties).map((party) => {
 
-        let chartData = [
-            ['TEST', 30, '#BE3075', 'TEST'],
-            ['TEST', 25, '#EB001F', 'TEST'],
-            ['TEST', 30, '#64A12D', 'TEST'],
-            ['TEST', 12, '#FFED00', 'TEST'],
-            ['TEST', 7, '#000000', 'TEST'],
-            ['TEST', 20, '#008AC5', 'TEST'],
-            ['TEST', 35, '#009EE0', 'TEST']
-        ]
+            
+            let chairsNumber = this.state.parties[party].parlamentResultChairs
+
+            if (Number(chairsNumber) > 0) {
+
+                let randomColor = this.randomColor();
+                let partyChartInfo = [party, Number(chairsNumber), randomColor, party]
+                chartData.push(partyChartInfo)
+            } 
+                        
+        })    
+
+        console.log(chartData)
 
         return chartData
     }
 
+    randomColor = () => {
+        let listOfColors = ['#ff4000','#ff8000','#ffbf00','#ffff00','#bfff00','#80ff00','#40ff00','#00ff00','#00ff40','#00ff80','#00ffbf','#00ffff','#00bfff','#0080ff','#0040ff','#0000ff','#4000ff','#8000ff','#bf00ff','#ff00ff','#ff00bf','#ff0080','#ff0040','#ff0000']
+        return listOfColors[Math.floor(Math.random() * listOfColors.length)]
+    }
+
     render() {
+
+        console.log(this.state)
 
         const isAgainstAllReached = this.state.againstAllReached;
 

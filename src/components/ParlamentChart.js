@@ -8,6 +8,7 @@ ItemSeriesModule(Highcharts);
 
 const generateChartData = (chartData) => {
 
+    console.log(chartData)
     const options = {
 
         chart: {
@@ -15,11 +16,11 @@ const generateChartData = (chartData) => {
         },
     
         title: {
-            text: 'Распределение'
+            text: 'Распределение мест в парламенте'
         },
     
         subtitle: {
-            text: 'ТЕСТ'
+            text: 'Жогорку Кенеш'
         },
     
         legend: {
