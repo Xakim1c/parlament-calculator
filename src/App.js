@@ -4,14 +4,14 @@ import './App.css';
 
 import electionsConfig from './electionsConfig'
 import Parties from './components/Parties'
+import { Grid, Typography } from '@material-ui/core';
 
 function App() {	
 	
   return (
     <div className="App">
-      
-      <div>{electionsConfig.distribute_all_votes_message}</div>
 
+      {/* <Typography variant="h6">{electionsConfig.distribute_all_votes_message}</Typography> */}
       <Parties></Parties>
 	
     </div>
