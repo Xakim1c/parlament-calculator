@@ -13,11 +13,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 import electionsConfig from '../electionsConfig'
 
-import birimdik from './PartyLogo/Мекенчил.png';
-
 import ParlamentChart from '../components/ParlamentChart'
 import { Typography } from '@material-ui/core';
 
+//import { d3 } from "d3-scale-chromatic";
 
 const styles = theme => ({
     header: {
@@ -218,6 +217,10 @@ class Parties extends React.Component {
     prepareChartData = () => {
 
         let chartData = []
+        //var colours = d3.scaleOrdinal(d3.schemeCategory10)
+	    //.domain(["foo", "bar", "baz", "foobar"]);
+  
+        //console.log(colours("foobar"))
 
         let listOfColors = ['#ff4000','#ff8000','#ffbf00','#ffff00','#bfff00','#80ff00','#40ff00','#00ff00','#00ff40','#00ff80','#00ffbf','#00ffff','#00bfff','#0080ff','#0040ff','#0000ff','#4000ff','#8000ff','#bf00ff','#ff00ff','#ff00bf','#ff0080','#ff0040','#ff0000']
 
@@ -232,7 +235,7 @@ class Parties extends React.Component {
                 let randomColor = listOfColors[colorIndex]
                 listOfColors.splice(colorIndex, 1);
 
-                let partyChartInfo = [party, parseInt(chairsNumber), randomColor, party]
+                let partyChartInfo = [party, parseInt(chairsNumber), , party]
                 chartData.push(partyChartInfo)              
             } 
                         
