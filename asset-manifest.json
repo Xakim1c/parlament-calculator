@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/parlament-calculator/static/css/main.5f361e03.chunk.css",
-    "main.js": "/parlament-calculator/static/js/main.0bf331e4.chunk.js",
-    "main.js.map": "/parlament-calculator/static/js/main.0bf331e4.chunk.js.map",
+    "main.js": "/parlament-calculator/static/js/main.c9d488d1.chunk.js",
+    "main.js.map": "/parlament-calculator/static/js/main.c9d488d1.chunk.js.map",
     "runtime-main.js": "/parlament-calculator/static/js/runtime-main.d4b27be5.js",
     "runtime-main.js.map": "/parlament-calculator/static/js/runtime-main.d4b27be5.js.map",
-    "static/js/2.c652b963.chunk.js": "/parlament-calculator/static/js/2.c652b963.chunk.js",
-    "static/js/2.c652b963.chunk.js.map": "/parlament-calculator/static/js/2.c652b963.chunk.js.map",
+    "static/js/2.4011e3b2.chunk.js": "/parlament-calculator/static/js/2.4011e3b2.chunk.js",
+    "static/js/2.4011e3b2.chunk.js.map": "/parlament-calculator/static/js/2.4011e3b2.chunk.js.map",
     "index.html": "/parlament-calculator/index.html",
-    "precache-manifest.04cdc4c8af686ac599900e771dee0221.js": "/parlament-calculator/precache-manifest.04cdc4c8af686ac599900e771dee0221.js",
+    "precache-manifest.62884366cbcf7b68ef2fa7975536b560.js": "/parlament-calculator/precache-manifest.62884366cbcf7b68ef2fa7975536b560.js",
     "service-worker.js": "/parlament-calculator/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/parlament-calculator/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.c652b963.chunk.js.LICENSE.txt": "/parlament-calculator/static/js/2.c652b963.chunk.js.LICENSE.txt",
+    "static/js/2.4011e3b2.chunk.js.LICENSE.txt": "/parlament-calculator/static/js/2.4011e3b2.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/parlament-calculator/static/media/logo.5d5d9eef.svg",
     "static/media/Бир Бол.png": "/parlament-calculator/static/media/Бир Бол.d6ae1889.png",
     "static/media/Кыргызстан.png": "/parlament-calculator/static/media/Кыргызстан.5f98b378.png",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.d4b27be5.js",
-    "static/js/2.c652b963.chunk.js",
+    "static/js/2.4011e3b2.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.0bf331e4.chunk.js"
+    "static/js/main.c9d488d1.chunk.js"
   ]
 }
