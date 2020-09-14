@@ -1,24 +1,29 @@
 {
   "files": {
     "main.css": "/parlament-calculator/static/css/main.5f361e03.chunk.css",
-    "main.js": "/parlament-calculator/static/js/main.d80ebcc5.chunk.js",
-    "main.js.map": "/parlament-calculator/static/js/main.d80ebcc5.chunk.js.map",
+    "main.js": "/parlament-calculator/static/js/main.0bf331e4.chunk.js",
+    "main.js.map": "/parlament-calculator/static/js/main.0bf331e4.chunk.js.map",
     "runtime-main.js": "/parlament-calculator/static/js/runtime-main.d4b27be5.js",
     "runtime-main.js.map": "/parlament-calculator/static/js/runtime-main.d4b27be5.js.map",
-    "static/js/2.4b287311.chunk.js": "/parlament-calculator/static/js/2.4b287311.chunk.js",
-    "static/js/2.4b287311.chunk.js.map": "/parlament-calculator/static/js/2.4b287311.chunk.js.map",
+    "static/js/2.c652b963.chunk.js": "/parlament-calculator/static/js/2.c652b963.chunk.js",
+    "static/js/2.c652b963.chunk.js.map": "/parlament-calculator/static/js/2.c652b963.chunk.js.map",
     "index.html": "/parlament-calculator/index.html",
-    "precache-manifest.adf54e9b449a42ff7f03afcb89293292.js": "/parlament-calculator/precache-manifest.adf54e9b449a42ff7f03afcb89293292.js",
+    "precache-manifest.04cdc4c8af686ac599900e771dee0221.js": "/parlament-calculator/precache-manifest.04cdc4c8af686ac599900e771dee0221.js",
     "service-worker.js": "/parlament-calculator/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/parlament-calculator/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.4b287311.chunk.js.LICENSE.txt": "/parlament-calculator/static/js/2.4b287311.chunk.js.LICENSE.txt",
+    "static/js/2.c652b963.chunk.js.LICENSE.txt": "/parlament-calculator/static/js/2.c652b963.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/parlament-calculator/static/media/logo.5d5d9eef.svg",
-    "static/media/Биримдик.svg": "/parlament-calculator/static/media/Биримдик.2b29198c.svg"
+    "static/media/Бир Бол.png": "/parlament-calculator/static/media/Бир Бол.d6ae1889.png",
+    "static/media/Кыргызстан.png": "/parlament-calculator/static/media/Кыргызстан.5f98b378.png",
+    "static/media/Мекен Ынтымагы.png": "/parlament-calculator/static/media/Мекен Ынтымагы.b9d0c5d3.png",
+    "static/media/Политическая партия ветеранов войны в Афганистане и участников других боевых конфликтов.png": "/parlament-calculator/static/media/Политическая партия ветеранов войны в Афганистане и участников других боевых конфликтов.d975dd8f.png",
+    "static/media/Чон казат.png": "/parlament-calculator/static/media/Чон казат.3f7000b1.png",
+    "static/media/Ыйман Нуру.png": "/parlament-calculator/static/media/Ыйман Нуру.e1489fd6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.d4b27be5.js",
-    "static/js/2.4b287311.chunk.js",
+    "static/js/2.c652b963.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.d80ebcc5.chunk.js"
+    "static/js/main.0bf331e4.chunk.js"
   ]
 }
