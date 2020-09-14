@@ -28,7 +28,7 @@ const generateChartData = (chartData) => {
         },
     
         series: [{
-            name: 'Representatives',
+            name: 'Депутатов',
             keys: ['name', 'y', 'color', 'label'],
             data: chartData,
             dataLabels: {

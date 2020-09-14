@@ -13,7 +13,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import electionsConfig from '../electionsConfig'
 
-import birimdik from './Биримдик.svg';
+import birimdik from './PartyLogo/Мекенчил.png';
 
 import ParlamentChart from '../components/ParlamentChart'
 import { Typography } from '@material-ui/core';
@@ -68,6 +68,7 @@ class Parties extends React.Component {
             partyInfo.voteResult = 0
             partyInfo.parlamentResultChairs = 0
             partyInfo.parlamentResultPercents = 0
+            partyInfo.residual = 0
             partyInfo.message = ''
 
             parties[value]=partyInfo
@@ -78,7 +79,6 @@ class Parties extends React.Component {
         this.state = defaultState;
       }    
 
-    
 
     voteNumberOnChange = (event) => {
 
@@ -92,17 +92,44 @@ class Parties extends React.Component {
         this.calculateResults(party)
     }
 
+    sortProperties(obj, sortedBy, isNumericSort, reverse) {
+        sortedBy = sortedBy || 1; // by default first key
+        isNumericSort = isNumericSort || false; // by default text sort
+        reverse = reverse || false; // by default no reverse
+
+        var reversed = (reverse) ? -1 : 1;
+
+        var sortable = [];
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                sortable.push([key, obj[key]]);
+            }
+        }
+        if (isNumericSort)
+            sortable.sort(function (a, b) {
+                return reversed * (a[1][sortedBy] - b[1][sortedBy]);
+            });
+        else
+            sortable.sort(function (a, b) {
+                var x = a[1][sortedBy],
+                    y = b[1][sortedBy];
+                return x < y ? reversed * -1 : x > y ? reversed : 0;
+            });
+        return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+    }
+
     calculateResults = (changedParty) => {
 
         let percentSum = 0
         let totalPassedParlamentPercent = 0
+        let totalChairs = 0 
 
         Object.keys(this.state.parties).map((party) => {
 
             let voteResult = this.state.parties[party].voteResult
             percentSum = percentSum + voteResult
 
-            if (voteResult > electionsConfig.cutoff && party != 'Против всех'){
+            if (voteResult >= electionsConfig.cutoff && party != 'Против всех'){
                 totalPassedParlamentPercent = totalPassedParlamentPercent + voteResult     
             }
 
@@ -117,31 +144,55 @@ class Parties extends React.Component {
 
             Object.keys(this.state.parties).map((party) => {
     
-                let voteResult = this.state.parties[party].voteResult
-                percentSum = percentSum + voteResult
-    
+                let voteResult = this.state.parties[party].voteResult    
 
                 let parlamentResultPercents = 0  
+                let parlamentResultChairsFloat = 0
                 let parlamentResultChairs = 0 
                 let message = electionsConfig.cutoff_message + ' ' + electionsConfig.cutoff + '%'
 
-                if (voteResult > electionsConfig.cutoff && party != 'Против всех'){
+                if (voteResult >= electionsConfig.cutoff && party != 'Против всех'){
                     parlamentResultPercents = voteResult * 100 / totalPassedParlamentPercent  
-                    parlamentResultChairs = electionsConfig.totalChairs * parlamentResultPercents / 100 
+                    parlamentResultChairsFloat = electionsConfig.totalChairs * parlamentResultPercents / 100 
+                    parlamentResultChairs = Math.floor(electionsConfig.totalChairs * parlamentResultPercents / 100)
                     message = ''
                 } 
 
                 parties[party].parlamentResultPercents = parlamentResultPercents
-                //parties[party].parlamentResultChairs = Math.round(parlamentResultChairs)
-                parties[party].parlamentResultChairs = Number(parlamentResultChairs).toFixed(1)
+                parties[party].parlamentResultChairs = parlamentResultChairs
+                parties[party].residual = (parlamentResultChairsFloat - parlamentResultChairs).toFixed(2)
                 parties[party].message = message
-            })             
+
+                totalChairs = totalChairs + parlamentResultChairs
+            })  
+            
+            //Распределить мандаты если остались после первичного распределения
+            if (totalChairs != electionsConfig.totalChairs){
+                console.log(parties)
+                console.log(totalChairs)
+                console.log(electionsConfig.totalChairs)
+
+                let sortedParties = this.sortProperties(parties, 'residual', true, true)
+
+                let distributeLeft = electionsConfig.totalChairs - totalChairs
+
+                sortedParties.forEach(function (item) {
+                    console.log(item[0]);
+
+                    if (distributeLeft > 0){
+                        parties[item[0]].parlamentResultChairs += 1 
+                        distributeLeft -= 1
+                    }
+                  });
+            }
+           
         } else {
             
             Object.keys(this.state.parties).map((party) => {
 
                 //parties[party].parlamentResultPercents = 0
                 parties[party].parlamentResultChairs = 0
+                parties[party].residual = 0
                 parties[party].message = ''
             })             
         }  
@@ -168,6 +219,8 @@ class Parties extends React.Component {
 
         let chartData = []
 
+        let listOfColors = ['#ff4000','#ff8000','#ffbf00','#ffff00','#bfff00','#80ff00','#40ff00','#00ff00','#00ff40','#00ff80','#00ffbf','#00ffff','#00bfff','#0080ff','#0040ff','#0000ff','#4000ff','#8000ff','#bf00ff','#ff00ff','#ff00bf','#ff0080','#ff0040','#ff0000']
+
         Object.keys(this.state.parties).map((party) => {
 
             
@@ -175,9 +228,12 @@ class Parties extends React.Component {
 
             if (Number(chairsNumber) > 0) {
 
-                let randomColor = this.randomColor();
+                let colorIndex = Math.floor(Math.random() * listOfColors.length)
+                let randomColor = listOfColors[colorIndex]
+                listOfColors.splice(colorIndex, 1);
+
                 let partyChartInfo = [party, parseInt(chairsNumber), randomColor, party]
-                chartData.push(partyChartInfo)
+                chartData.push(partyChartInfo)              
             } 
                         
         })    
@@ -186,10 +242,6 @@ class Parties extends React.Component {
         return chartData
     }
 
-    randomColor = () => {
-        let listOfColors = ['#ff4000','#ff8000','#ffbf00','#ffff00','#bfff00','#80ff00','#40ff00','#00ff00','#00ff40','#00ff80','#00ffbf','#00ffff','#00bfff','#0080ff','#0040ff','#0000ff','#4000ff','#8000ff','#bf00ff','#ff00ff','#ff00bf','#ff0080','#ff0040','#ff0000']
-        return listOfColors[Math.floor(Math.random() * listOfColors.length)]
-    }
 
     render() {
 
@@ -223,7 +275,7 @@ class Parties extends React.Component {
                             <ListItemAvatar>
                             <Avatar
                                 //alt={`Avatar n°${value}`}
-                                src={birimdik}
+                                src={require("./PartyLogo/" + value + ".png")}
                                 variant="square"
                             />
                             </ListItemAvatar>
@@ -255,7 +307,7 @@ class Parties extends React.Component {
                             label="Мест в парламенте" 
                             variant="outlined"
                             fullWidth
-                            inputProps={{style: {fontSize: 14}}}
+                            inputProps={{style: {fontSize: 14, color: "green", fontWeight: 'bold'}}}
                             InputLabelProps={{style: {fontSize: 14}}}
                             /> 
                         </Grid>
@@ -270,7 +322,7 @@ class Parties extends React.Component {
                 <div>
                     {this.state.percentsLeft == 0
                         ? <ParlamentChart>chartData={this.prepareChartData()}</ParlamentChart>
-                        : <b>Распределите голоса чтобы посмотреть распределение</b>
+                        : <b>Для отображения графика распределения мест необходимо полностью распределить проценты голосов</b>
                     }
                 </div>
                               
