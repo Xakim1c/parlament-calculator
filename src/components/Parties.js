@@ -58,6 +58,7 @@ class Parties extends React.Component {
 
         defaultState.percentsLeft=100
         defaultState.againstAllReached = false
+        defaultState.onlyOnePartyPassed = false
 
         let parties = {}
         electionsConfig.parties.map((value) => {
@@ -167,9 +168,6 @@ class Parties extends React.Component {
             
             //Распределить мандаты если остались после первичного распределения
             if (totalChairs != electionsConfig.totalChairs){
-                console.log(parties)
-                console.log(totalChairs)
-                console.log(electionsConfig.totalChairs)
 
                 let sortedParties = this.sortProperties(parties, 'residual', true, true)
 
@@ -184,7 +182,91 @@ class Parties extends React.Component {
                     }
                   });
             }
-           
+
+            //Если одна партия набирает больше 65 голосов
+            let monopolyParty = ''
+            let isMonopoly = false
+            let monopolyChairs = 0
+            let monopolyPercent = 0
+            
+            Object.keys(this.state.parties).map((party) => {
+                if (parties[party].parlamentResultChairs > electionsConfig.maxChairsForParty) {
+                    isMonopoly = true
+                    monopolyParty = party
+                    monopolyChairs = parties[party].parlamentResultChairs
+                    monopolyPercent = parties[party].voteResult 
+                }
+
+            })
+
+            if (isMonopoly){
+
+                totalChairs = 0
+                Object.keys(this.state.parties).map((party) => {
+    
+                    let voteResult = parties[party].voteResult    
+    
+                    if (voteResult >= electionsConfig.cutoff && party != 'Против всех' ){
+                        if (party == monopolyParty){
+                            parties[party].parlamentResultChairs = electionsConfig.maxChairsForParty
+                        }else{  
+                            // console.log("START MONOPOLY")               
+                            // console.log(monopolyChairs)     
+                            // console.log(monopolyPercent) 
+                            // console.log(voteResult)     
+                            
+                            let parlamentResultPercents = voteResult * 100 / (totalPassedParlamentPercent - monopolyPercent)  
+
+                            console.log(Math.floor((monopolyChairs-electionsConfig.maxChairsForParty) * parlamentResultPercents / 100))  
+                            parties[party].parlamentResultChairs += Math.floor((monopolyChairs-electionsConfig.maxChairsForParty) * parlamentResultPercents / 100)
+                        }
+
+                        totalChairs = totalChairs + parties[party].parlamentResultChairs
+                    }    
+                })  
+                
+                 //Распределить мандаты если остались после первичного распределения (если Монополия)
+                if (totalChairs != electionsConfig.totalChairs){
+
+                    let sortedParties = this.sortProperties(parties, 'residual', true, true)
+
+                    let distributeLeft = electionsConfig.totalChairs - totalChairs
+
+                    sortedParties.forEach(function (item) {
+                        console.log(item[0]);
+
+                        if (distributeLeft > 0){
+                            if (item[0] != monopolyParty){
+                                parties[item[0]].parlamentResultChairs += 1 
+                                distributeLeft -= 1
+                            }                            
+                        }
+                    });
+                }
+
+                //Проверить если одна только партия прошла барьер
+                let passCounter = 0   
+                let onlyOnePartyPassed = false             
+                Object.keys(this.state.parties).map((party) => {
+                    
+                    let voteResult = parties[party].voteResult  
+
+                    if (voteResult >= electionsConfig.cutoff){
+                        passCounter += 1 
+                    }                    
+                })
+
+                if (passCounter < 2){
+
+                    onlyOnePartyPassed = true    
+                    Object.keys(this.state.parties).map((party) => {
+                        parties[party].parlamentResultChairs = 0
+                    })   
+
+                    this.setState( {onlyOnePartyPassed: onlyOnePartyPassed} )
+                }
+            }
+
         } else {
             
             Object.keys(this.state.parties).map((party) => {
@@ -251,6 +333,7 @@ class Parties extends React.Component {
         console.log(this.state)
 
         const isAgainstAllReached = this.state.againstAllReached;
+        const onlyOnePartyPassed = this.state.onlyOnePartyPassed;
         const { classes } = this.props;
 
         //console.log(this.prepareChartData())
@@ -261,10 +344,11 @@ class Parties extends React.Component {
                         <Typography variant="h6">{electionsConfig.distribute_all_votes_message}</Typography>
                     </Grid>
                 </Grid>
-                <Typography variant="body1">Осталось распределить: {this.state.percentsLeft}</Typography>
-                
+                <Typography variant="body1">Осталось распределить: {this.state.percentsLeft}</Typography>                
 
                 <b>{isAgainstAllReached ? electionsConfig.against_all_reached_message : ''}</b>
+
+                <b>{onlyOnePartyPassed ? electionsConfig.one_party_cutoff_only_message : ''}</b>
 
                 <List dense className={'Parties'}>
                 {electionsConfig.parties.map((value) => {
