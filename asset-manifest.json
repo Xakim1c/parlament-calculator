@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/parlament-calculator/static/css/main.5f361e03.chunk.css",
-    "main.js": "/parlament-calculator/static/js/main.9a69eaa8.chunk.js",
-    "main.js.map": "/parlament-calculator/static/js/main.9a69eaa8.chunk.js.map",
-    "runtime-main.js": "/parlament-calculator/static/js/runtime-main.d4b27be5.js",
-    "runtime-main.js.map": "/parlament-calculator/static/js/runtime-main.d4b27be5.js.map",
-    "static/js/2.4011e3b2.chunk.js": "/parlament-calculator/static/js/2.4011e3b2.chunk.js",
-    "static/js/2.4011e3b2.chunk.js.map": "/parlament-calculator/static/js/2.4011e3b2.chunk.js.map",
-    "index.html": "/parlament-calculator/index.html",
-    "precache-manifest.8798b5d685cad4a2fa7d1872a33595b2.js": "/parlament-calculator/precache-manifest.8798b5d685cad4a2fa7d1872a33595b2.js",
-    "service-worker.js": "/parlament-calculator/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/parlament-calculator/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.4011e3b2.chunk.js.LICENSE.txt": "/parlament-calculator/static/js/2.4011e3b2.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/parlament-calculator/static/media/logo.5d5d9eef.svg",
-    "static/media/Бир Бол.png": "/parlament-calculator/static/media/Бир Бол.d6ae1889.png",
-    "static/media/Кыргызстан.png": "/parlament-calculator/static/media/Кыргызстан.5f98b378.png",
-    "static/media/Мекен Ынтымагы.png": "/parlament-calculator/static/media/Мекен Ынтымагы.b9d0c5d3.png",
-    "static/media/Политическая партия ветеранов войны в Афганистане и участников других боевых конфликтов.png": "/parlament-calculator/static/media/Политическая партия ветеранов войны в Афганистане и участников других боевых конфликтов.d975dd8f.png",
-    "static/media/Чон казат.png": "/parlament-calculator/static/media/Чон казат.3f7000b1.png",
-    "static/media/Ыйман Нуру.png": "/parlament-calculator/static/media/Ыйман Нуру.e1489fd6.png"
+    "main.css": "/parliament-calculator/static/css/main.5f361e03.chunk.css",
+    "main.js": "/parliament-calculator/static/js/main.cb95dea5.chunk.js",
+    "main.js.map": "/parliament-calculator/static/js/main.cb95dea5.chunk.js.map",
+    "runtime-main.js": "/parliament-calculator/static/js/runtime-main.cce5c210.js",
+    "runtime-main.js.map": "/parliament-calculator/static/js/runtime-main.cce5c210.js.map",
+    "static/js/2.1451b32e.chunk.js": "/parliament-calculator/static/js/2.1451b32e.chunk.js",
+    "static/js/2.1451b32e.chunk.js.map": "/parliament-calculator/static/js/2.1451b32e.chunk.js.map",
+    "index.html": "/parliament-calculator/index.html",
+    "precache-manifest.7210c8ca1552c47510b7251070fa159a.js": "/parliament-calculator/precache-manifest.7210c8ca1552c47510b7251070fa159a.js",
+    "service-worker.js": "/parliament-calculator/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/parliament-calculator/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.1451b32e.chunk.js.LICENSE.txt": "/parliament-calculator/static/js/2.1451b32e.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/parliament-calculator/static/media/logo.5d5d9eef.svg",
+    "static/media/Бир Бол.png": "/parliament-calculator/static/media/Бир Бол.d6ae1889.png",
+    "static/media/Кыргызстан.png": "/parliament-calculator/static/media/Кыргызстан.5f98b378.png",
+    "static/media/Мекен Ынтымагы.png": "/parliament-calculator/static/media/Мекен Ынтымагы.b9d0c5d3.png",
+    "static/media/Политическая партия ветеранов войны в Афганистане и участников других боевых конфликтов.png": "/parliament-calculator/static/media/Политическая партия ветеранов войны в Афганистане и участников других боевых конфликтов.d975dd8f.png",
+    "static/media/Чон казат.png": "/parliament-calculator/static/media/Чон казат.3f7000b1.png",
+    "static/media/Ыйман Нуру.png": "/parliament-calculator/static/media/Ыйман Нуру.e1489fd6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.d4b27be5.js",
-    "static/js/2.4011e3b2.chunk.js",
+    "static/js/runtime-main.cce5c210.js",
+    "static/js/2.1451b32e.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.9a69eaa8.chunk.js"
+    "static/js/main.cb95dea5.chunk.js"
   ]
 }
